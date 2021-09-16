@@ -13,34 +13,30 @@ class Complex{
     {
       return x + " + " + y + "i" ;
     }
-    public Complex add(Complex T) 
+    public Complex add(Complex T,Complex temp) 
     {
-       Complex temp=new Complex(0,0);
        temp.x=this.x + T.x;
        temp.y=this.y + T.y;
        return temp;
     }
-    public Complex subtract(Complex T) 
+    public Complex subtract(Complex T,Complex temp) 
     {
-       Complex temp1=new Complex(0,0);
-       temp1.x=this.x - T.x;
-       temp1.y=this.y - T.y;
-       return temp1;
+       temp.x=this.x - T.x;
+       temp.y=this.y - T.y;
+       return temp;
     }
-    public Complex multiply(Complex T) 
+    public Complex multiply(Complex T,Complex temp) 
     {
-        Complex temp2=new Complex(0,0);
-        temp2.x=this.x * T.x - this.y * T.y;
-        temp2.y=this.x * T.y + T.x * this.y;
-        return temp2;
+        temp.x=this.x * T.x - this.y * T.y;
+        temp.y=this.x * T.y + T.x * this.y;
+        return temp;
     }
-    public Complex divide(Complex T)
+    public Complex divide(Complex T,Complex temp)
     {
-        Complex temp3=new Complex(0,0);
         double k= T.x * T.x + T.y * T.y;
-        temp3.x= (this.x * T.x + this.y * T.y)/k;
-        temp3.y= (this.x * T.y - T.x * this.y)/k;
-        return temp3;
+        temp.x= (this.x * T.x + this.y * T.y)/k;
+        temp.y= (this.x * T.y - T.x * this.y)/k;
+        return temp;
     }
     
     
@@ -59,19 +55,17 @@ public class Main
 	    int b2= sc.nextInt();
 		Complex A = new Complex(a1, a2);
 		Complex B = new Complex(b1, b2);
+		Complex temp = new Complex(0,0);
 		System.out.println("Complex Number 1: " + A.PrintComplex());
         System.out.println("Complex Number 2: " + B.PrintComplex());
         
-        Complex temp=A.add(B);
-        System.out.println("Sum of Two Complex Numbers: " + temp.PrintComplex());
-        
-        Complex temp1=A.subtract(B);
-        System.out.println("Subtraction of Two Complex Numbers: " + temp1.PrintComplex());
-        
-        Complex temp2=A.multiply(B);
-        System.out.println("Product of Two Complex Numbers: " + temp2.PrintComplex());
-        
-        Complex temp3=A.divide(B);
-        System.out.println("Division of Two Complex Numbers: " + temp3.PrintComplex());
+        System.out.println("Sum of Two Complex Numbers: " + A.add(B,temp).PrintComplex());
+    
+        System.out.println("Subtraction of Two Complex Numbers: " + A.subtract(B,temp).PrintComplex());
+      
+        System.out.println("Product of Two Complex Numbers: " + A.multiply(B,temp).PrintComplex());
+    
+        System.out.println("Division of Two Complex Numbers: " + A.divide(B,temp).PrintComplex());
 	}
 }
+
