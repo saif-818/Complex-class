@@ -1,41 +1,41 @@
 import java.util.*;  
 class Complex{
     
-     double x;
-     double y;
+     double real;
+     double imaginary;
     
     public Complex(int real,int imaginary)
     {
-        this.x=real;
-        this.y=imaginary;
+        this.real=real;
+        this.imaginary=imaginary;
     }
     public String PrintComplex() 
     {
-      return x + " + " + y + "i" ;
+      return real + " + " + imaginary + "i" ;
     }
     public Complex add(Complex T,Complex temp) 
     {
-       temp.x=this.x + T.x;
-       temp.y=this.y + T.y;
+       temp.real=this.real + T.real;
+       temp.imaginary=this.imaginary + T.imaginary;
        return temp;
     }
     public Complex subtract(Complex T,Complex temp) 
     {
-       temp.x=this.x - T.x;
-       temp.y=this.y - T.y;
+       temp.real=this.real - T.real;
+       temp.imaginary=this.imaginary - T.imaginary;
        return temp;
     }
     public Complex multiply(Complex T,Complex temp) 
     {
-        temp.x=this.x * T.x - this.y * T.y;
-        temp.y=this.x * T.y + T.x * this.y;
+        temp.real=this.real * T.real - this.imaginary * T.imaginary;
+        temp.imaginary=this.real * T.imaginary + T.real * this.imaginary;
         return temp;
     }
     public Complex divide(Complex T,Complex temp)
     {
-        double k= T.x * T.x + T.y * T.y;
-        temp.x= (this.x * T.x + this.y * T.y)/k;
-        temp.y= (this.x * T.y - T.x * this.y)/k;
+        double k= T.real * T.real + T.imaginary * T.imaginary;
+        temp.real= (this.real * T.real + this.imaginary * T.imaginary)/k;
+        temp.imaginary= -(this.real * T.imaginary - T.real * this.imaginary)/k;
         return temp;
     }
     
